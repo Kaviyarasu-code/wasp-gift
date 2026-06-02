@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Married Life!</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <div id="background-animation"></div>
+
+    <div class="container">
+       <h1>Happy Married Life <span class="names-wrap">Moulesh 💕 Pooja</span></h1>
+        <p class="instruction">Please click on the below section to reveal your gift code</p>
+        
+        <div class="gift-container">
+            <!-- PART 1 -->
+            <div class="gift-section" onclick="revealCode(event, this)">
+                <div class="part-title">Part 1</div>
+                
+                <div class="code-row">
+                    <span class="code-label">Voucher:</span>
+                    <div class="code-wrapper">
+                        <div class="code-box">ABCD-1234-XYZ</div>
+                        <button class="copy-btn" onclick="copyToClipboard(event, this)">
+                            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span class="tooltip">Copied!</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="code-row">
+                    <span class="code-label">Pin:</span>
+                    <div class="code-wrapper">
+                        <div class="code-box">1234</div>
+                        <button class="copy-btn" onclick="copyToClipboard(event, this)">
+                            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span class="tooltip">Copied!</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="tap-to-reveal">✨ Click to reveal ✨</div>
+            </div>
+
+            <!-- PART 2 -->
+            <div class="gift-section" onclick="revealCode(event, this)">
+                <div class="part-title">Part 2</div>
+                
+                <div class="code-row">
+                    <span class="code-label">Voucher:</span>
+                    <div class="code-wrapper">
+                        <div class="code-box">9876-WASP-POOJA</div>
+                        <button class="copy-btn" onclick="copyToClipboard(event, this)">
+                            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span class="tooltip">Copied!</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="code-row">
+                    <span class="code-label">Pin:</span>
+                    <div class="code-wrapper">
+                        <div class="code-box">5678</div>
+                        <button class="copy-btn" onclick="copyToClipboard(event, this)">
+                            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span class="tooltip">Copied!</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="tap-to-reveal">✨ Click to reveal ✨</div>
+            </div>
+        </div>
+
+        <!-- HOW TO REDEEM SECTION -->
+        <div class="redeem-instructions">
+            <h3>How to Redeem on BigBasket</h3>
+            <ol>
+                <li>Open the <strong>BigBasket app</strong> or website and log in.</li>
+                <li>Go to <strong>My Profile</strong> and select <strong>My Wallet</strong>.</li>
+                <li>Click on <strong>Enter Gift Voucher / Card Code</strong>.</li>
+                <li>Paste the copied <strong>Voucher Code</strong> and <strong>Pin</strong>, then click apply.</li>
+            </ol>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

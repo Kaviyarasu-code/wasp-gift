@@ -1,0 +1,362 @@
+:root {
+    --primary-color: #d11e5f;
+    --secondary-color: #ff8a9e;
+    --bg-gradient: linear-gradient(135deg, #fce4ec 0%, #ffc1cc 100%);
+    --card-bg: rgba(255, 255, 255, 0.9);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Georgia', serif;
+}
+
+body {
+    background: var(--bg-gradient);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;         /* Ensures sequential top-down layout alignment fallback */
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;             /* Gaps for screen boundaries */
+    overflow-x: hidden;             /* Blocks erratic horizontal scrolling */
+    overflow-y: auto;               /* Allows vertical scrolling if the card exceeds screen height */
+    position: relative;
+}
+
+/* Floating Background Elements */
+.background-element {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.6;
+    animation: float-around linear infinite;
+}
+
+.heart {
+    color: #ff6b8a;
+}
+
+.star {
+    color: #ffd700;
+}
+
+.bokeh {
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes float-around {
+    0% {
+        transform: translateY(110vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.container {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    max-width: 600px;
+    width: 100%;
+    padding: 50px 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+    position: relative;
+    z-index: 10;
+    margin: auto 0;                /* Safely centers content vertically without slicing layout tops */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    color: var(--primary-color);
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+    line-height: 1.2;
+}
+
+.names-wrap {
+    display: block;                 /* Drops names nicely to the next line on large layouts */
+    margin-top: 5px;
+}
+
+.instruction {
+    color: #555;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+}
+
+.gift-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.gift-section {
+    background: white;
+    border: 2px dashed #ffb3c1;
+    border-radius: 12px;
+    padding: 20px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.gift-section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+}
+
+.part-title {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.code-box {
+    font-size: 1.5rem;
+    color: #333;
+    background: #fdf6f7;
+    padding: 15px;
+    border-radius: 8px;
+    letter-spacing: 1px;
+    filter: blur(6px);
+    user-select: none;
+    transition: filter 0.4s ease;
+}
+
+.gift-section.revealed .code-box {
+    filter: blur(0);
+    background: #fff0f3;
+    user-select: text;
+}
+
+.tap-to-reveal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: var(--primary-color);
+    transition: opacity 0.3s ease;
+}
+
+.gift-section.revealed .tap-to-reveal {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* --- Mobile Fix Media Query --- */
+@media (max-width: 600px) {
+    body {
+        padding: 20px 10px;         /* Tightens outer borders for mobile screen space */
+    }
+
+    .container {
+        padding: 35px 20px;         /* Reduces container internal padding to save space */
+    }
+
+    h1 {
+        font-size: 7vw !important;  /* Fluid size that scales to mobile viewports flawlessly */
+        margin-bottom: 15px;
+    }
+
+    .names-wrap {
+        display: inline-block;      /* Prevents the words from separating into stacked letters */
+        white-space: nowrap;        /* Locks "Moulesh 💕 Pooja" onto one unbroken string */
+        font-size: 6.8vw !important;
+    }
+
+    .instruction {
+        font-size: 0.95rem;
+        margin-bottom: 25px;
+        line-height: 1.4;
+    }
+    
+    .code-box {
+        font-size: 1.25rem;         /* Shrinks code slightly so it stays clean in boxes */
+        padding: 12px;
+    }
+}
+.code-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+.code-row:last-child {
+    margin-bottom: 0;
+}
+
+.code-label {
+    font-weight: bold;
+    color: #555;
+    font-size: 1.1rem;
+    text-align: left;
+    min-width: 80px; /* Ensures labels align perfectly inline */
+}
+
+.code-box {
+    flex-grow: 1; /* Makes the blur box stretch nicely to fill the card space */
+}
+
+@media (max-width: 600px) {
+    .code-label {
+        font-size: 0.95rem;
+        min-width: 70px;
+    }
+}
+/* How to Redeem Section Styling */
+.redeem-instructions {
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 1px dashed #ffb3c1;
+    text-align: left;
+}
+
+.redeem-instructions h3 {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.redeem-instructions ol {
+    padding-left: 20px;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.redeem-instructions li {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.redeem-instructions strong {
+    color: #333;
+}
+
+/* Responsive adjustments for mobile viewports */
+@media (max-width: 600px) {
+    .redeem-instructions {
+        margin-top: 25px;
+        padding-top: 20px;
+    }
+    
+    .redeem-instructions h3 {
+        font-size: 1.05rem;
+    }
+
+    .redeem-instructions ol {
+        font-size: 0.85rem;
+        padding-left: 15px;
+    }
+}
+/* Copy Infrastructure Layout */
+.code-wrapper {
+    display: flex;
+    align-items: center;
+    background: #fdf6f7;
+    border-radius: 8px;
+    flex-grow: 1;
+    position: relative;
+}
+
+/* Adjust your existing code-box background conflict */
+.code-box {
+    background: transparent !important;
+    padding-right: 10px !important;
+}
+
+.copy-btn {
+    background: transparent;
+    border: none;
+    color: var(--primary-color);
+    padding: 0 15px;
+    height: 100%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s ease, color 0.2s;
+    opacity: 0;                 /* Hidden until the parent card layout is revealed */
+    pointer-events: none;
+    position: relative;
+}
+
+/* Make copy button interactive only after the gift block is unlocked */
+.gift-section.revealed .copy-btn {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.copy-btn:hover {
+    color: var(--secondary-color);
+}
+
+.copy-btn:active {
+    transform: scale(0.9);
+}
+
+/* "Copied!" Tooltip Pop-up Alert */
+.tooltip {
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%) translateY(5px);
+    background: #333;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 0.75rem;
+    border-radius: 4px;
+    font-family: sans-serif;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    white-space: nowrap;
+    z-index: 100;
+}
+
+.tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+}
+
+.copy-btn.show-tooltip .tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
